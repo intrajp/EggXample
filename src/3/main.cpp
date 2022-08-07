@@ -41,10 +41,9 @@ void insertion_sort(int arr[MAX]);
 
 int main()
 {
-    for (int i=0; i<MAX;i++){
+    for (int i=0; i<MAX;i++)
         printf("%d ",int_arr[i]);
-    }
-    puts("");
+    cout << endl; 
     insertion_sort(int_arr);
     exit(EXIT_SUCCESS);
 }
@@ -55,7 +54,7 @@ void insertion_sort(int arr[MAX])
     int tmp = 0;
     int insertion_element = 0;
     int break_all = 0;
-    puts("==== Result ====");
+    puts("==== Insertion sort ====");
     for (int i=0;i<MAX;i++) {
         break_all = 0;
         if (i == 0)
@@ -68,40 +67,36 @@ void insertion_sort(int arr[MAX])
                 for (int i=0; i<MAX;i++){
                     printf("%d ",int_arr[i]);
                 }
-                puts("");
+                cout << endl; 
             }
         } else {
-            //printf("i:%d\n",i);
             int j=i-1;
             int k=0;
             while (j>=0) {
-                //printf("arr[i]:%d\n",arr[i]);
-                //printf("arr[j]:%d\n",arr[j]);
-                //printf("j:%d\n",j);
-                //puts("----");
                 if (arr[i-1] <= arr[i]) {
                     j--;
                     continue;
                 }
                 if ((arr[j] < arr[i]) || j == 0) {
-                    //puts("!!");
                     if ((j == 0) && (arr[j] >= arr[i]))
                         insertion_element = j;
                     else
                         insertion_element = j+1;
-                    //printf("insertion_element:%d\n",insertion_element);
                     tmp = arr[i];
                     for(k=i;k>=insertion_element;k--)
                         arr[k] = arr[k-1];
                     arr[insertion_element] = tmp;
                     // Let's check.
-                    for (int i=0; i<MAX;i++){
+                    for (int i=0; i<MAX;i++)
                         printf("%d ",int_arr[i]);
-                    }
-                    puts("");
+                    cout << endl; 
                 }
                 j--;
             }
         }
     }
+    puts("==== Result ====");
+    for (int i=0; i<MAX;i++)
+        printf("%d ",int_arr[i]);
+    cout << endl; 
 }
