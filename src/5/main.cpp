@@ -28,7 +28,7 @@
 #include <error.h>
 
 //
-// Bubble sort.
+// Selection sort.
 //
 
 const int MAX=10;
@@ -39,38 +39,42 @@ using namespace std;
 //int int_arr[MAX] = {0,125,16,4,355,75,18,75,59,32};
 int int_arr[MAX] = {16,4,355,125,0,75,18,75,59,32};
 
-void bubble_sort(int arr[]);
+void selection_sort(int arr[]);
 
 int main()
 {
     for (int i=0;i<MAX;i++)
         printf("%d ",int_arr[i]);
-    bubble_sort(int_arr);
+    selection_sort(int_arr);
     cout << endl;
     exit(EXIT_SUCCESS);
 }
 
-// This function do bubble sort.
-void bubble_sort(int arr[])
+// This function do selection sort the array.
+void selection_sort(int arr[])
 {
     int temp=0;
+    int smallest=200000;
+    int smallest_element=0;
     for(int i=0;i<MAX;i++) {	
-        for(int j=MAX-1;j>=0;j--){
-            if (arr[j] < arr[j-1]) {
-                temp = arr[j];
-                arr[j] = arr[j-1];
-                arr[j-1] = temp;
+        smallest_element=0;
+        for (int j=i;j<MAX;j++) {
+            if (smallest > arr[j]) {
+                smallest = arr[j];
+                smallest_element = j;
             }
         }
-        if ( i == 0) {
-            cout << endl;
-            puts("==== Bubbling ====");
-        }
-        for (int k=0; k<MAX;k++)
-            printf("%d ",arr[k]);
+        temp = arr[i];
+        arr[i] = smallest;
+        arr[smallest_element] = temp;
+        if (i == 0)
+            puts("\n==== selecting ====");
+        for (int i=0; i<MAX;i++)
+            printf("%d ",arr[i]);
         cout << endl;
+        smallest=200000;
     }
-    puts("==== Result ====");
+    puts("\n==== Result ====");
     for (int i=0; i<MAX;i++)
         printf("%d ",arr[i]);
     cout << endl;
